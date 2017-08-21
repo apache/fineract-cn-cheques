@@ -1,0 +1,6 @@
+rootProject.name = 'cheques'
+
+includeBuild 'api'
+includeBuild 'service'
+includeBuild 'component-test'
+

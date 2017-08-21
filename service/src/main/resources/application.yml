@@ -1,0 +1,66 @@
+#
+# Copyright 2017 Kuelap, Inc.
+#
+# All Rights Reserved.
+#
+# NOTICE:  All information contained herein is, and remains
+# the property of Kuelap, Inc and its suppliers, if any.
+# The intellectual and technical concepts contained herein
+# are proprietary to Kuelap, Inc and its suppliers and may
+# be covered by U.S. and Foreign Patents, patents in process,
+# and are protected by trade secret or copyright law.
+# Dissemination of this information or reproduction of this material
+# is strictly forbidden unless prior written permission is obtained
+# Kuelap, Inc.
+#
+
+spring:
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      enabled: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8081
+  contextPath: /cheques/v1
+
+cassandra:
+  clusterName: staging_cluster
+  contactPoints: 127.0.0.1:9042,127.0.0.2:9042,127.0.0.3:9042
+  keyspace: seshat
+  cl:
+    read: LOCAL_QUORUM
+    write: LOCAL_QUORUM
+    delete: LOCAL_QUORUM
+
+mariadb:
+  driverClass: org.mariadb.jdbc.Driver
+  database: seshat
+  host: localhost
+  port: 3306
+  user: root
+  password: mysql
+
+bonecp:
+  idleMaxAgeInMinutes: 240
+  idleConnectionTestPeriodInMinutes: 60
+  maxConnectionsPerPartition: 10
+  minConnectionsPerPartition: 1
+  partitionCount: 2
+  acquireIncrement: 5
+  statementsCacheSize: 100
+
+async:
+  corePoolSize: 32
+  maxPoolSize: 16384
+  queueCapacity: 0
+  threadName: async-processor-
+
+flyway:
+  enabled: false
