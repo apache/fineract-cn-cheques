@@ -54,7 +54,14 @@ public class AccountingService {
 
   public void bookCharges(final String sourceAccount, final List<Charge> charges) {
 
-    final Double totalCharges = charges.stream().mapToDouble(Charge::getAmount).sum();
+    final Double totalCharges = charges.stream().mapToDouble(charge -> {
+      if (charge.getProportional()) {
+        this.logger.info("Charges for issuing cheques must be fixed.");
+        return 0.00D;
+      } else {
+        return charge.getAmount();
+      }
+    }).sum();
     if (totalCharges == 0.00D) {
       return;
     }
