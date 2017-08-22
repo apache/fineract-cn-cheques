@@ -23,6 +23,7 @@ import io.mifos.core.command.config.EnableCommandProcessing;
 import io.mifos.core.lang.config.EnableServiceException;
 import io.mifos.core.lang.config.EnableTenantContext;
 import io.mifos.core.mariadb.config.EnableMariaDB;
+import io.mifos.customer.api.v1.client.CustomerManager;
 import io.mifos.deposit.api.v1.client.DepositAccountManager;
 import io.mifos.office.api.v1.client.OrganizationManager;
 import org.slf4j.Logger;
@@ -52,7 +53,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
     clients = {
         LedgerManager.class,
         DepositAccountManager.class,
-        OrganizationManager.class
+        OrganizationManager.class,
+        CustomerManager.class
     }
 )
 @ComponentScan({

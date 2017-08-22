@@ -20,6 +20,7 @@ import io.mifos.deposit.api.v1.client.DepositAccountManager;
 import io.mifos.deposit.api.v1.definition.domain.Action;
 import io.mifos.deposit.api.v1.definition.domain.Charge;
 import io.mifos.deposit.api.v1.definition.domain.ProductDefinition;
+import io.mifos.deposit.api.v1.instance.ProductInstanceNotFoundException;
 import io.mifos.deposit.api.v1.instance.domain.ProductInstance;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,5 +76,13 @@ public class DepositService {
         this.depositAccountManager.findProductDefinition(productInstance.getProductIdentifier());
 
     return productDefinition.getCashAccountIdentifier();
+  }
+
+  public Optional<ProductInstance> findProductInstance(final String accountNumber) {
+    try {
+      return Optional.of(this.depositAccountManager.findProductInstance(accountNumber));
+    } catch (final ProductInstanceNotFoundException pinfex) {
+      return Optional.empty();
+    }
   }
 }

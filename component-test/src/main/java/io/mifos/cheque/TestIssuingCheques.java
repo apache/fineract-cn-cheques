@@ -15,7 +15,7 @@
  */
 package io.mifos.cheque;
 
-import io.mifos.cheque.api.v1.client.IssuingCount;
+import io.mifos.cheque.api.v1.domain.IssuingCount;
 import io.mifos.cheque.service.internal.repository.IssuedChequeEntity;
 import io.mifos.cheque.service.internal.repository.IssuedChequeRepository;
 import io.mifos.cheque.service.internal.service.helper.AccountingService;
