@@ -13,7 +13,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * Kuelap, Inc.
  */
-package io.mifos.cheque.api.v1.client;
+package io.mifos.cheque.api.v1.domain;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;

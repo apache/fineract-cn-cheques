@@ -35,6 +35,7 @@ import org.springframework.stereotype.Service;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -54,7 +55,14 @@ public class AccountingService {
 
   public void bookCharges(final String sourceAccount, final List<Charge> charges) {
 
-    final Double totalCharges = charges.stream().mapToDouble(Charge::getAmount).sum();
+    final Double totalCharges = charges.stream().mapToDouble(charge -> {
+      if (charge.getProportional()) {
+        this.logger.info("Charges for issuing cheques must be fixed.");
+        return 0.00D;
+      } else {
+        return charge.getAmount();
+      }
+    }).sum();
     if (totalCharges == 0.00D) {
       return;
     }
@@ -92,12 +100,7 @@ public class AccountingService {
   }
 
   public boolean accountExists(final String accountIdentifier) {
-    try {
-      this.ledgerManager.findAccount(accountIdentifier);
-      return true;
-    } catch (final AccountNotFoundException anfex) {
-      return false;
-    }
+    return this.findAccount(accountIdentifier).isPresent();
   }
 
   public JournalEntry findJournalEntry(final String identifier) {
@@ -106,5 +109,13 @@ public class AccountingService {
 
   public void processJournalEntry(final JournalEntry journalEntry) {
     this.ledgerManager.createJournalEntry(journalEntry);
+  }
+
+  public Optional<Account> findAccount(final String accountNumber) {
+    try {
+      return Optional.of(this.ledgerManager.findAccount(accountNumber));
+    } catch (final AccountNotFoundException anfex) {
+      return Optional.empty();
+    }
   }
 }

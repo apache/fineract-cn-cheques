@@ -20,11 +20,11 @@ import io.mifos.accounting.api.v1.domain.Creditor;
 import io.mifos.accounting.api.v1.domain.Debtor;
 import io.mifos.accounting.api.v1.domain.JournalEntry;
 import io.mifos.cheque.api.v1.EventConstants;
-import io.mifos.cheque.api.v1.client.IssuingCount;
 import io.mifos.cheque.api.v1.domain.Action;
 import io.mifos.cheque.api.v1.domain.Cheque;
 import io.mifos.cheque.api.v1.domain.ChequeProcessingCommand;
 import io.mifos.cheque.api.v1.domain.ChequeTransaction;
+import io.mifos.cheque.api.v1.domain.IssuingCount;
 import io.mifos.cheque.api.v1.domain.State;
 import io.mifos.cheque.service.internal.format.MICRParser;
 import io.mifos.cheque.service.internal.service.helper.AccountingService;
@@ -80,7 +80,6 @@ public class TestCheques extends AbstractChequeTest {
     Mockito
         .doAnswer(invocation -> true)
         .when(this.accountingServiceSpy).accountExists(randomCheque.getMicr().getAccountNumber());
-
 
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setCheque(randomCheque);

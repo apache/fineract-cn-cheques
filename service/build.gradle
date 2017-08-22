@@ -35,6 +35,7 @@ dependencies {
             [group: 'io.mifos.accounting', name: 'api', version: versions.frameworkaccounting],
             [group: 'io.mifos.deposit-account-management', name: 'api', version: versions.frameworkdeposit],
             [group: 'io.mifos.office', name: 'api', version: versions.frameworkoffice],
+            [group: 'io.mifos.customer', name: 'api', version: versions.frameworkcustomer],
             [group: 'com.google.code.gson', name: 'gson'],
             [group: 'io.mifos.core', name: 'lang', version: versions.frameworklang],
             [group: 'io.mifos.core', name: 'async', version: versions.frameworkasync],

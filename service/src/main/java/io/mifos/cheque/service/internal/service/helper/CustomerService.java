@@ -16,9 +16,9 @@
 package io.mifos.cheque.service.internal.service.helper;
 
 import io.mifos.cheque.service.ServiceConstants;
-import io.mifos.office.api.v1.client.NotFoundException;
-import io.mifos.office.api.v1.client.OrganizationManager;
-import io.mifos.office.api.v1.domain.Office;
+import io.mifos.customer.api.v1.client.CustomerManager;
+import io.mifos.customer.api.v1.client.CustomerNotFoundException;
+import io.mifos.customer.api.v1.domain.Customer;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,27 +27,23 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class OrganizationService {
+public class CustomerService {
 
   private final Logger logger;
-  private final OrganizationManager organizationManager;
+  private final CustomerManager customerManager;
 
   @Autowired
-  public OrganizationService(@Qualifier(ServiceConstants.LOGGER_NAME) final Logger logger,
-                             final OrganizationManager organizationManager) {
+  public CustomerService(@Qualifier(ServiceConstants.LOGGER_NAME) final Logger logger,
+                         final CustomerManager customerManager) {
     super();
     this.logger = logger;
-    this.organizationManager = organizationManager;
+    this.customerManager = customerManager;
   }
 
-  public boolean officeExistsByBranchSortCode(final String branchSortCode) {
-    return this.findOffice(branchSortCode).isPresent();
-  }
-
-  public Optional<Office> findOffice(final String branchSortCode) {
+  public Optional<Customer> findCustomer(final String identifier) {
     try {
-      return Optional.of(this.organizationManager.findOfficeByIdentifier(branchSortCode));
-    } catch (final NotFoundException nfex) {
+      return Optional.of(this.customerManager.findCustomer(identifier));
+    } catch (final CustomerNotFoundException cnfex) {
       return Optional.empty();
     }
   }

@@ -18,8 +18,14 @@ package io.mifos.cheque.api.v1.client;
 import io.mifos.cheque.api.v1.domain.Cheque;
 import io.mifos.cheque.api.v1.domain.ChequeProcessingCommand;
 import io.mifos.cheque.api.v1.domain.ChequeTransaction;
+import io.mifos.cheque.api.v1.domain.IssuingCount;
+import io.mifos.cheque.api.v1.domain.MICRResolution;
+import io.mifos.core.api.annotation.ThrowsException;
+import io.mifos.core.api.annotation.ThrowsExceptions;
 import io.mifos.core.api.util.CustomFeignClientsConfiguration;
+import io.mifos.core.api.util.NotFoundException;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -84,4 +90,17 @@ public interface ChequeManager {
       consumes = {MediaType.APPLICATION_JSON_VALUE}
   )
   void process(@RequestBody @Valid final ChequeTransaction chequeTransaction);
+
+  @RequestMapping(
+      value = "/micr/{identifier}",
+      method = RequestMethod.GET,
+      produces = {MediaType.ALL_VALUE},
+      consumes = {MediaType.APPLICATION_JSON_VALUE}
+  )
+  @ThrowsExceptions({
+      @ThrowsException(status = HttpStatus.NOT_FOUND, exception = NotFoundException.class),
+      @ThrowsException(status = HttpStatus.CONFLICT, exception = InvalidChequeNumberException.class),
+      @ThrowsException(status = HttpStatus.BAD_REQUEST, exception = DependingResourceNotValidException.class)
+  })
+  MICRResolution expandMicr(@PathVariable("identifier") final String identifier);
 }
