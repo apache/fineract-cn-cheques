@@ -1,4 +1,4 @@
-group 'io.kuelap.cheques'
+group 'io.mifos.cheques'
 version '0.1.0-BUILD-SNAPSHOT'
 
 ext.versions = [
