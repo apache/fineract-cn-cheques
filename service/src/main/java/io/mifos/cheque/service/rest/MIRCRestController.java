@@ -15,6 +15,9 @@
  */
 package io.mifos.cheque.service.rest;
 
+import io.mifos.anubis.annotation.AcceptedTokenType;
+import io.mifos.anubis.annotation.Permittable;
+import io.mifos.cheque.api.v1.PermittableGroupIds;
 import io.mifos.cheque.api.v1.domain.MICRResolution;
 import io.mifos.cheque.service.ServiceConstants;
 import io.mifos.cheque.service.internal.format.MICRParser;
@@ -45,6 +48,7 @@ public class MIRCRestController {
     this.micrService = micrService;
   }
 
+  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CHEQUE_TRANSACTION)
   @RequestMapping(
       value = "/{identifier}",
       method = RequestMethod.GET,
