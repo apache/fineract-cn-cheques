@@ -30,7 +30,7 @@ dependencies {
             [group: 'org.springframework.cloud', name: 'spring-cloud-starter-config'],
             [group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka'],
             [group: 'org.springframework.boot', name: 'spring-boot-starter-jetty'],
-            [group: 'io.kuelap.cheques', name: 'api', version: project.version],
+            [group: 'io.mifos.cheques', name: 'api', version: project.version],
             [group: 'io.mifos.anubis', name: 'library', version: versions.frameworkanubis],
             [group: 'io.mifos.accounting', name: 'api', version: versions.frameworkaccounting],
             [group: 'io.mifos.deposit-account-management', name: 'api', version: versions.frameworkdeposit],
