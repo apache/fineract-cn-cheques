@@ -36,7 +36,6 @@ public class Cheque {
   private String dateIssued;
   private Boolean openCheque;
   private State state;
-  @NotNull
   private String journalEntryIdentifier;
 
   public Cheque() {
