@@ -233,7 +233,7 @@ public class ChequeAggregate {
           journalEntryToReverse.getCreditors().stream().map(creditor -> {
             final Debtor debtor = new Debtor();
             debtor.setAccountNumber(creditor.getAccountNumber());
-            debtor.setAccountNumber(creditor.getAmount());
+            debtor.setAmount(creditor.getAmount());
             return debtor;
           }).collect(Collectors.toSet())
       );
@@ -241,7 +241,7 @@ public class ChequeAggregate {
           journalEntryToReverse.getDebtors().stream().map(debtor -> {
             final Creditor creditor = new Creditor();
             creditor.setAccountNumber(debtor.getAccountNumber());
-            creditor.setAccountNumber(debtor.getAmount());
+            creditor.setAmount(debtor.getAmount());
             return creditor;
           }).collect(Collectors.toSet())
       );
