@@ -19,19 +19,27 @@ import io.mifos.cheque.api.v1.domain.Cheque;
 
 public class ChequeTransactionCommand {
   private final Cheque cheque;
-  private final String creditorAccountNumber;
+  private final String chequesReceivableAccount;
+  private final String creditorAccount;
 
-  public ChequeTransactionCommand(final Cheque cheque, final String creditorAccountNumber) {
+  public ChequeTransactionCommand(final Cheque cheque,
+                                  final String chequesReceivableAccount,
+                                  final String creditorAccount) {
     super();
     this.cheque = cheque;
-    this.creditorAccountNumber = creditorAccountNumber;
+    this.chequesReceivableAccount = chequesReceivableAccount;
+    this.creditorAccount = creditorAccount;
   }
 
   public Cheque cheque() {
     return this.cheque;
   }
 
-  public String creditorAccountNumber() {
-    return this.creditorAccountNumber;
+  public String chequesReceivableAccount() {
+    return this.chequesReceivableAccount;
+  }
+
+  public String creditorAccount() {
+    return this.creditorAccount;
   }
 }

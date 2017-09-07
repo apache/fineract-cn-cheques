@@ -74,7 +74,7 @@ public class ChequeTransactionRestController {
           MICRParser.toIdentifier(chequeTransaction.getCheque().getMicr()));
     }
 
-    this.commandGateway.process(new ChequeTransactionCommand(cheque, chequeTransaction.getCreditorAccountNumber()));
+    this.commandGateway.process(new ChequeTransactionCommand(cheque, chequeTransaction.getChequesReceivableAccount(),  chequeTransaction.getCreditorAccountNumber()));
 
     return ResponseEntity.accepted().build();
   }
