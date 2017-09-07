@@ -162,16 +162,14 @@ public class ChequeAggregate {
       debtor.setAccountNumber(micr.getAccountNumber());
       chequeEntity.setState(State.PROCESSED.name());
     } else {
-      debtor.setAccountNumber(
-          this.depositService.getCashAccountForProduct(chequeTransactionCommand.creditorAccountNumber())
-      );
+      debtor.setAccountNumber(chequeTransactionCommand.chequesReceivableAccount());
       chequeEntity.setState(State.PENDING.name());
     }
     journalEntry.setDebtors(Sets.newHashSet(debtor));
 
     final Creditor creditor = new Creditor();
     creditor.setAmount(chequeEntity.getAmount().toString());
-    creditor.setAccountNumber(chequeTransactionCommand.creditorAccountNumber());
+    creditor.setAccountNumber(chequeTransactionCommand.creditorAccount());
     journalEntry.setCreditors(Sets.newHashSet(creditor));
 
     this.accountingService.processJournalEntry(journalEntry);

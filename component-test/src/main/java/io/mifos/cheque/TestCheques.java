@@ -83,6 +83,7 @@ public class TestCheques extends AbstractChequeTest {
 
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setCheque(randomCheque);
+    chequeTransaction.setChequesReceivableAccount(RandomStringUtils.randomAlphabetic(34));
     chequeTransaction.setCreditorAccountNumber(RandomStringUtils.randomAlphanumeric(34));
     super.chequeManager.process(chequeTransaction);
 
@@ -114,6 +115,7 @@ public class TestCheques extends AbstractChequeTest {
 
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setCheque(randomCheque);
+    chequeTransaction.setChequesReceivableAccount(RandomStringUtils.randomAlphabetic(34));
     chequeTransaction.setCreditorAccountNumber(RandomStringUtils.randomAlphanumeric(34));
     super.chequeManager.process(chequeTransaction);
 
@@ -158,6 +160,7 @@ public class TestCheques extends AbstractChequeTest {
 
 
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
+    chequeTransaction.setChequesReceivableAccount(RandomStringUtils.randomAlphabetic(34));
     chequeTransaction.setCheque(randomCheque);
     chequeTransaction.setCreditorAccountNumber(RandomStringUtils.randomAlphanumeric(34));
     super.chequeManager.process(chequeTransaction);

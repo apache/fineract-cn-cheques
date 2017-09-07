@@ -153,6 +153,7 @@ public class TestMICR extends AbstractChequeTest {
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setCheque(randomCheque);
     chequeTransaction.setCreditorAccountNumber(RandomStringUtils.randomAlphanumeric(34));
+    chequeTransaction.setChequesReceivableAccount(RandomStringUtils.randomAlphanumeric(34));
     super.chequeManager.process(chequeTransaction);
 
     Assert.assertTrue(

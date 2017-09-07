@@ -15,6 +15,7 @@
  */
 package io.mifos.cheque.api.v1.domain;
 
+import io.mifos.core.lang.validation.constraints.ValidIdentifier;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
@@ -25,7 +26,9 @@ public class ChequeTransaction {
   @NotNull
   @Valid
   private Cheque cheque;
-  @NotEmpty
+  @ValidIdentifier(maxLength = 34)
+  private String chequesReceivableAccount;
+  @ValidIdentifier(maxLength = 34)
   private String creditorAccountNumber;
 
   public ChequeTransaction() {
@@ -38,6 +41,14 @@ public class ChequeTransaction {
 
   public void setCheque(final Cheque cheque) {
     this.cheque = cheque;
+  }
+
+  public String getChequesReceivableAccount() {
+    return this.chequesReceivableAccount;
+  }
+
+  public void setChequesReceivableAccount(final String chequesReceivableAccount) {
+    this.chequesReceivableAccount = chequesReceivableAccount;
   }
 
   public String getCreditorAccountNumber() {
