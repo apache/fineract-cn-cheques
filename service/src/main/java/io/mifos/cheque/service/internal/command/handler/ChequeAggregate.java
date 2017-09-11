@@ -138,7 +138,7 @@ public class ChequeAggregate {
     final JournalEntry journalEntry = new JournalEntry();
     journalEntry.setTransactionIdentifier("chq-tx-" + UUID.randomUUID().toString());
     final String transactionType =
-        chequeEntity.getOpenCheque() != null && chequeEntity.getOpenCheque() ? "OPCQ " : "ORCQ";
+        chequeEntity.getOpenCheque() != null && chequeEntity.getOpenCheque() ? "OPCQ" : "ORCQ";
     journalEntry.setTransactionType(transactionType);
     journalEntry.setTransactionDate(DateConverter.toIsoString(chequeEntity.getCreatedOn()));
     journalEntry.setMessage(transactionType);
