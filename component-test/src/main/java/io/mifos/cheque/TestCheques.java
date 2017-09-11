@@ -35,7 +35,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Matchers;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.validation.AbstractErrors;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.Collections;
 import java.util.UUID;
@@ -50,6 +57,9 @@ public class TestCheques extends AbstractChequeTest {
 
   @MockBean
   private AccountingService accountingServiceSpy;
+
+  @Autowired
+  private Validator validator;
 
   public TestCheques() {
     super();
@@ -158,7 +168,6 @@ public class TestCheques extends AbstractChequeTest {
         .doAnswer(invocation -> false)
         .when(this.accountingServiceSpy).accountExists(randomCheque.getMicr().getAccountNumber());
 
-
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setChequesReceivableAccount(RandomStringUtils.randomAlphabetic(34));
     chequeTransaction.setCheque(randomCheque);
@@ -209,4 +218,41 @@ public class TestCheques extends AbstractChequeTest {
         .verify(this.accountingServiceSpy, Mockito.times(2))
         .processJournalEntry(Matchers.any(JournalEntry.class));
   }
+
+  @Test
+  public void shouldProcessOpenCheque() throws Exception {
+      final Cheque randomCheque = Fixture.createRandomCheque();
+      randomCheque.setOpenCheque(Boolean.TRUE);
+
+      Mockito
+          .doAnswer(invocation -> false)
+          .when(this.organizationServiceSpy).officeExistsByBranchSortCode(randomCheque.getMicr().getBranchSortCode());
+
+      Mockito
+          .doAnswer(invocation -> false)
+          .when(this.accountingServiceSpy).accountExists(randomCheque.getMicr().getAccountNumber());
+
+      Mockito.doAnswer(invocation -> {
+        final JournalEntry journalEntry = invocation.getArgumentAt(0, JournalEntry.class);
+        final BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(journalEntry, "journalEntry");
+        this.validator.validate(journalEntry, bindingResult);
+        if (bindingResult.getErrorCount() != 0) {
+          bindingResult.getAllErrors().forEach(objectError -> {
+            System.out.println(objectError.toString());
+          });
+        }
+        return invocation.getMethod().getReturnType();
+      }).when(this.accountingServiceSpy).processJournalEntry(Matchers.any(JournalEntry.class));
+
+      final ChequeTransaction chequeTransaction = new ChequeTransaction();
+      chequeTransaction.setChequesReceivableAccount(RandomStringUtils.randomAlphabetic(34));
+      chequeTransaction.setCheque(randomCheque);
+      chequeTransaction.setCreditorAccountNumber(RandomStringUtils.randomAlphanumeric(34));
+      super.chequeManager.process(chequeTransaction);
+
+      Assert.assertTrue(
+          super.eventRecorder.wait(EventConstants.CHEQUE_TRANSACTION, MICRParser.toIdentifier(randomCheque.getMicr()))
+      );
+
+    }
 }
