@@ -158,8 +158,8 @@ public class ChequeAggregate {
       } else {
         throw ServiceException.conflict("Account {0} never issued cheques.", micr.getAccountNumber());
       }
-
-      debtor.setAccountNumber(micr.getAccountNumber());
+      this.accountingService.findAccount(micr.getAccountNumber())
+          .ifPresent(account -> debtor.setAccountNumber(account.getIdentifier()));
       chequeEntity.setState(State.PROCESSED.name());
     } else {
       debtor.setAccountNumber(chequeTransactionCommand.chequesReceivableAccount());

@@ -15,6 +15,7 @@
  */
 package io.mifos.cheque;
 
+import io.mifos.accounting.api.v1.domain.Account;
 import io.mifos.cheque.api.v1.EventConstants;
 import io.mifos.cheque.api.v1.client.DependingResourceNotValidException;
 import io.mifos.cheque.api.v1.client.InvalidChequeNumberException;
@@ -149,6 +150,12 @@ public class TestMICR extends AbstractChequeTest {
     Mockito
         .doAnswer(invocation -> true)
         .when(this.accountingServiceSpy).accountExists(randomCheque.getMicr().getAccountNumber());
+
+    final Account mockedAccount = new Account();
+    mockedAccount.setIdentifier(randomCheque.getMicr().getAccountNumber());
+    Mockito
+        .doAnswer(invocation -> Optional.of(mockedAccount))
+        .when(this.accountingServiceSpy).findAccount(randomCheque.getMicr().getAccountNumber());
 
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setCheque(randomCheque);
