@@ -16,6 +16,7 @@
 package io.mifos.cheque;
 
 import com.google.common.collect.Sets;
+import io.mifos.accounting.api.v1.domain.Account;
 import io.mifos.accounting.api.v1.domain.Creditor;
 import io.mifos.accounting.api.v1.domain.Debtor;
 import io.mifos.accounting.api.v1.domain.JournalEntry;
@@ -37,14 +38,11 @@ import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.validation.AbstractErrors;
 import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.Collections;
+import java.util.Optional;
 import java.util.UUID;
 
 public class TestCheques extends AbstractChequeTest {
@@ -90,6 +88,12 @@ public class TestCheques extends AbstractChequeTest {
     Mockito
         .doAnswer(invocation -> true)
         .when(this.accountingServiceSpy).accountExists(randomCheque.getMicr().getAccountNumber());
+
+    final Account mockedAccount = new Account();
+    mockedAccount.setIdentifier(randomCheque.getMicr().getAccountNumber());
+    Mockito
+        .doAnswer(invocation -> Optional.of(mockedAccount))
+        .when(this.accountingServiceSpy).findAccount(randomCheque.getMicr().getAccountNumber());
 
     final ChequeTransaction chequeTransaction = new ChequeTransaction();
     chequeTransaction.setCheque(randomCheque);

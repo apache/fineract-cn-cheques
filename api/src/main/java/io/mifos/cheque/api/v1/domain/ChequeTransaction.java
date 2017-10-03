@@ -16,7 +16,6 @@
 package io.mifos.cheque.api.v1.domain;
 
 import io.mifos.core.lang.validation.constraints.ValidIdentifier;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

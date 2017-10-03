@@ -19,6 +19,7 @@ import com.google.common.collect.Sets;
 import io.mifos.accounting.api.v1.client.AccountNotFoundException;
 import io.mifos.accounting.api.v1.client.LedgerManager;
 import io.mifos.accounting.api.v1.domain.Account;
+import io.mifos.accounting.api.v1.domain.AccountPage;
 import io.mifos.accounting.api.v1.domain.Creditor;
 import io.mifos.accounting.api.v1.domain.Debtor;
 import io.mifos.accounting.api.v1.domain.JournalEntry;
@@ -67,7 +68,7 @@ public class AccountingService {
       return;
     }
 
-    final Account account = this.ledgerManager.findAccount(sourceAccount);
+    final Account account = this.findAccount(sourceAccount).orElseThrow(AccountNotFoundException::new);
     if (account.getBalance() < totalCharges) {
       throw ServiceException.conflict("Insufficient account balance.");
     }
@@ -80,7 +81,7 @@ public class AccountingService {
     journalEntry.setClerk(UserContextHolder.checkedGetUser());
 
     final Debtor debtor = new Debtor();
-    debtor.setAccountNumber(sourceAccount);
+    debtor.setAccountNumber(account.getIdentifier());
     debtor.setAmount(totalCharges.toString());
     journalEntry.setDebtors(Sets.newHashSet(debtor));
 
@@ -115,7 +116,13 @@ public class AccountingService {
     try {
       return Optional.of(this.ledgerManager.findAccount(accountNumber));
     } catch (final AccountNotFoundException anfex) {
-      return Optional.empty();
+      final AccountPage accountPage = this.ledgerManager.fetchAccounts(true, accountNumber, null, true,
+          0, 10, null, null);
+
+      return accountPage.getAccounts()
+          .stream()
+          .filter(account -> account.getAlternativeAccountNumber().equals(accountNumber))
+          .findFirst();
     }
   }
 }
