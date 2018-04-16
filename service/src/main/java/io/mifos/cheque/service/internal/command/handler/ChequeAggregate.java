@@ -19,10 +19,6 @@
 package io.mifos.cheque.service.internal.command.handler;
 
 import com.google.common.collect.Sets;
-import io.mifos.accounting.api.v1.client.AccountNotFoundException;
-import io.mifos.accounting.api.v1.domain.Creditor;
-import io.mifos.accounting.api.v1.domain.Debtor;
-import io.mifos.accounting.api.v1.domain.JournalEntry;
 import io.mifos.cheque.api.v1.EventConstants;
 import io.mifos.cheque.api.v1.domain.MICR;
 import io.mifos.cheque.api.v1.domain.State;
@@ -40,25 +36,28 @@ import io.mifos.cheque.service.internal.repository.IssuedChequeRepository;
 import io.mifos.cheque.service.internal.service.helper.AccountingService;
 import io.mifos.cheque.service.internal.service.helper.DepositService;
 import io.mifos.cheque.service.internal.service.helper.OrganizationService;
-import io.mifos.core.api.util.UserContextHolder;
-import io.mifos.core.command.annotation.Aggregate;
-import io.mifos.core.command.annotation.CommandHandler;
-import io.mifos.core.command.annotation.EventEmitter;
-import io.mifos.core.lang.DateConverter;
-import io.mifos.core.lang.ServiceException;
-import io.mifos.deposit.api.v1.definition.domain.Charge;
-import io.mifos.deposit.api.v1.instance.ProductInstanceNotFoundException;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
-import javax.transaction.Transactional;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import org.apache.fineract.cn.accounting.api.v1.client.AccountNotFoundException;
+import org.apache.fineract.cn.accounting.api.v1.domain.Creditor;
+import org.apache.fineract.cn.accounting.api.v1.domain.Debtor;
+import org.apache.fineract.cn.accounting.api.v1.domain.JournalEntry;
+import org.apache.fineract.cn.api.util.UserContextHolder;
+import org.apache.fineract.cn.command.annotation.Aggregate;
+import org.apache.fineract.cn.command.annotation.CommandHandler;
+import org.apache.fineract.cn.command.annotation.EventEmitter;
+import org.apache.fineract.cn.deposit.api.v1.definition.domain.Charge;
+import org.apache.fineract.cn.deposit.api.v1.instance.ProductInstanceNotFoundException;
+import org.apache.fineract.cn.lang.DateConverter;
+import org.apache.fineract.cn.lang.ServiceException;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @Aggregate
 public class ChequeAggregate {

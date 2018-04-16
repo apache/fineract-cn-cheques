@@ -19,10 +19,6 @@
 package io.mifos.cheque;
 
 import com.google.common.collect.Sets;
-import io.mifos.accounting.api.v1.domain.Account;
-import io.mifos.accounting.api.v1.domain.Creditor;
-import io.mifos.accounting.api.v1.domain.Debtor;
-import io.mifos.accounting.api.v1.domain.JournalEntry;
 import io.mifos.cheque.api.v1.EventConstants;
 import io.mifos.cheque.api.v1.domain.Action;
 import io.mifos.cheque.api.v1.domain.Cheque;
@@ -34,7 +30,14 @@ import io.mifos.cheque.service.internal.format.MICRParser;
 import io.mifos.cheque.service.internal.service.helper.AccountingService;
 import io.mifos.cheque.service.internal.service.helper.DepositService;
 import io.mifos.cheque.service.internal.service.helper.OrganizationService;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.UUID;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.fineract.cn.accounting.api.v1.domain.Account;
+import org.apache.fineract.cn.accounting.api.v1.domain.Creditor;
+import org.apache.fineract.cn.accounting.api.v1.domain.Debtor;
+import org.apache.fineract.cn.accounting.api.v1.domain.JournalEntry;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Matchers;
@@ -43,10 +46,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Validator;
-
-import java.util.Collections;
-import java.util.Optional;
-import java.util.UUID;
 
 public class TestCheques extends AbstractChequeTest {
 

@@ -21,12 +21,11 @@ package io.mifos.cheque.service.internal.mapper;
 import io.mifos.cheque.api.v1.domain.Cheque;
 import io.mifos.cheque.api.v1.domain.MICR;
 import io.mifos.cheque.service.internal.repository.ChequeEntity;
-import io.mifos.core.api.util.UserContextHolder;
-import io.mifos.core.lang.DateConverter;
-
 import java.sql.Date;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import org.apache.fineract.cn.api.util.UserContextHolder;
+import org.apache.fineract.cn.lang.DateConverter;
 
 public class ChequeMapper {
 

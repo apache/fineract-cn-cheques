@@ -18,10 +18,9 @@
  */
 package io.mifos.cheque.api.v1.domain;
 
-import io.mifos.core.lang.validation.constraints.ValidIdentifier;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import org.apache.fineract.cn.lang.validation.constraints.ValidIdentifier;
 
 public class ChequeTransaction {
 

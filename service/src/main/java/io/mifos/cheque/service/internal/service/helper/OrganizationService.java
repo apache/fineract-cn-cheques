@@ -19,15 +19,14 @@
 package io.mifos.cheque.service.internal.service.helper;
 
 import io.mifos.cheque.service.ServiceConstants;
-import io.mifos.office.api.v1.client.NotFoundException;
-import io.mifos.office.api.v1.client.OrganizationManager;
-import io.mifos.office.api.v1.domain.Office;
+import java.util.Optional;
+import org.apache.fineract.cn.office.api.v1.client.NotFoundException;
+import org.apache.fineract.cn.office.api.v1.client.OrganizationManager;
+import org.apache.fineract.cn.office.api.v1.domain.Office;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class OrganizationService {

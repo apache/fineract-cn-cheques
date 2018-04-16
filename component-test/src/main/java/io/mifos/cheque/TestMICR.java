@@ -18,7 +18,6 @@
  */
 package io.mifos.cheque;
 
-import io.mifos.accounting.api.v1.domain.Account;
 import io.mifos.cheque.api.v1.EventConstants;
 import io.mifos.cheque.api.v1.client.DependingResourceNotValidException;
 import io.mifos.cheque.api.v1.client.InvalidChequeNumberException;
@@ -32,19 +31,19 @@ import io.mifos.cheque.service.internal.service.helper.AccountingService;
 import io.mifos.cheque.service.internal.service.helper.CustomerService;
 import io.mifos.cheque.service.internal.service.helper.DepositService;
 import io.mifos.cheque.service.internal.service.helper.OrganizationService;
-import io.mifos.core.api.util.NotFoundException;
-import io.mifos.customer.api.v1.domain.Customer;
-import io.mifos.deposit.api.v1.instance.domain.ProductInstance;
-import io.mifos.office.api.v1.domain.Office;
+import java.util.Collections;
+import java.util.Optional;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.fineract.cn.accounting.api.v1.domain.Account;
+import org.apache.fineract.cn.api.util.NotFoundException;
+import org.apache.fineract.cn.customer.api.v1.domain.Customer;
+import org.apache.fineract.cn.deposit.api.v1.instance.domain.ProductInstance;
+import org.apache.fineract.cn.office.api.v1.domain.Office;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import java.util.Collections;
-import java.util.Optional;
 
 public class TestMICR extends AbstractChequeTest {
 

@@ -19,20 +19,19 @@
 package io.mifos.cheque.service.internal.service.helper;
 
 import io.mifos.cheque.service.ServiceConstants;
-import io.mifos.deposit.api.v1.client.DepositAccountManager;
-import io.mifos.deposit.api.v1.definition.domain.Action;
-import io.mifos.deposit.api.v1.definition.domain.Charge;
-import io.mifos.deposit.api.v1.definition.domain.ProductDefinition;
-import io.mifos.deposit.api.v1.instance.ProductInstanceNotFoundException;
-import io.mifos.deposit.api.v1.instance.domain.ProductInstance;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.apache.fineract.cn.deposit.api.v1.client.DepositAccountManager;
+import org.apache.fineract.cn.deposit.api.v1.definition.domain.Action;
+import org.apache.fineract.cn.deposit.api.v1.definition.domain.Charge;
+import org.apache.fineract.cn.deposit.api.v1.definition.domain.ProductDefinition;
+import org.apache.fineract.cn.deposit.api.v1.instance.ProductInstanceNotFoundException;
+import org.apache.fineract.cn.deposit.api.v1.instance.domain.ProductInstance;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class DepositService {

@@ -20,11 +20,10 @@ package io.mifos.cheque;
 
 import io.mifos.cheque.api.v1.domain.Cheque;
 import io.mifos.cheque.api.v1.domain.MICR;
-import io.mifos.core.lang.DateConverter;
-import org.apache.commons.lang3.RandomStringUtils;
-
 import java.time.Clock;
 import java.time.LocalDate;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.fineract.cn.lang.DateConverter;
 
 public class Fixture {
 

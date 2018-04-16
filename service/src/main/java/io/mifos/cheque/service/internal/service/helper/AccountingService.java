@@ -19,29 +19,28 @@
 package io.mifos.cheque.service.internal.service.helper;
 
 import com.google.common.collect.Sets;
-import io.mifos.accounting.api.v1.client.AccountNotFoundException;
-import io.mifos.accounting.api.v1.client.LedgerManager;
-import io.mifos.accounting.api.v1.domain.Account;
-import io.mifos.accounting.api.v1.domain.AccountPage;
-import io.mifos.accounting.api.v1.domain.Creditor;
-import io.mifos.accounting.api.v1.domain.Debtor;
-import io.mifos.accounting.api.v1.domain.JournalEntry;
 import io.mifos.cheque.service.ServiceConstants;
-import io.mifos.core.api.util.UserContextHolder;
-import io.mifos.core.lang.DateConverter;
-import io.mifos.core.lang.ServiceException;
-import io.mifos.deposit.api.v1.definition.domain.Charge;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.apache.fineract.cn.accounting.api.v1.client.AccountNotFoundException;
+import org.apache.fineract.cn.accounting.api.v1.client.LedgerManager;
+import org.apache.fineract.cn.accounting.api.v1.domain.Account;
+import org.apache.fineract.cn.accounting.api.v1.domain.AccountPage;
+import org.apache.fineract.cn.accounting.api.v1.domain.Creditor;
+import org.apache.fineract.cn.accounting.api.v1.domain.Debtor;
+import org.apache.fineract.cn.accounting.api.v1.domain.JournalEntry;
+import org.apache.fineract.cn.api.util.UserContextHolder;
+import org.apache.fineract.cn.deposit.api.v1.definition.domain.Charge;
+import org.apache.fineract.cn.lang.DateConverter;
+import org.apache.fineract.cn.lang.ServiceException;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AccountingService {

@@ -19,15 +19,14 @@
 package io.mifos.cheque.service.internal.service.helper;
 
 import io.mifos.cheque.service.ServiceConstants;
-import io.mifos.customer.api.v1.client.CustomerManager;
-import io.mifos.customer.api.v1.client.CustomerNotFoundException;
-import io.mifos.customer.api.v1.domain.Customer;
+import java.util.Optional;
+import org.apache.fineract.cn.customer.api.v1.client.CustomerManager;
+import org.apache.fineract.cn.customer.api.v1.client.CustomerNotFoundException;
+import org.apache.fineract.cn.customer.api.v1.domain.Customer;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class CustomerService {
