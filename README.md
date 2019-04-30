@@ -1,4 +1,4 @@
-# Apache Fineract CN Cheques Management
+# Apache Fineract CN Cheques Management [![Build Status](https://api.travis-ci.com/apache/fineract-cn-cheques.svg?branch=develop)](https://travis-ci.com/apache/fineract-cn-cheques)
 
 This project provides services to issue, validate cheques and execute transactions on them.
 
