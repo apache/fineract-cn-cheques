@@ -114,7 +114,8 @@ rat {
             "**/build/**",
             "gradlew",
             "gradlew.bat",
-            "README.md"
+            "README.md",
+            "**/.dockerignore/**"
     ]
     plainOutput = true
 }
