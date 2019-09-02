@@ -18,7 +18,7 @@
 --
 
 CREATE TABLE sopdet_issued_cheques (
-  id                         BIGINT         NOT NULL AUTO_INCREMENT,
+  id                         BIGSERIAL      NOT NULL,
   account_identifier         VARCHAR(34)    NOT NULL,
   last_issued_number         NUMERIC(8)     NOT NULL,
   created_on                 TIMESTAMP(3)   NOT NULL,
@@ -26,11 +26,10 @@ CREATE TABLE sopdet_issued_cheques (
   last_modified_on           TIMESTAMP(3)   NULL,
   last_modified_by           VARCHAR(32)    NULL,
   CONSTRAINT sopdet_issued_cheques_pk PRIMARY KEY (id),
-  CONSTRAINT sopdet_issued_cheques_uq UNIQUE (account_identifier)
-);
+  CONSTRAINT sopdet_issued_cheques_uq UNIQUE (account_identifier) );
 
 CREATE TABLE sopdet_cheques (
-  id                         BIGINT         NOT NULL AUTO_INCREMENT,
+  id                         BIGSERIAL      NOT NULL,
   cheque_number              VARCHAR(8)     NOT NULL,
   branch_sort_code           VARCHAR(11)    NOT NULL,
   account_number             VARCHAR(34)    NOT NULL,
@@ -47,5 +46,4 @@ CREATE TABLE sopdet_cheques (
   last_modified_on           TIMESTAMP(3)   NULL,
   last_modified_by           VARCHAR(32)    NULL,
   CONSTRAINT sopdet_cheques_pk PRIMARY KEY (id),
-  CONSTRAINT sopdet_cheques_uq UNIQUE (cheque_number, branch_sort_code, account_number)
-);
+  CONSTRAINT sopdet_cheques_uq UNIQUE (cheque_number, branch_sort_code, account_number) );

@@ -27,7 +27,7 @@ import org.apache.fineract.cn.customer.api.v1.client.CustomerManager;
 import org.apache.fineract.cn.deposit.api.v1.client.DepositAccountManager;
 import org.apache.fineract.cn.lang.config.EnableServiceException;
 import org.apache.fineract.cn.lang.config.EnableTenantContext;
-import org.apache.fineract.cn.mariadb.config.EnableMariaDB;
+import org.apache.fineract.cn.postgresql.config.EnablePostgreSQL;
 import org.apache.fineract.cn.office.api.v1.client.OrganizationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +48,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableAsync
 @EnableTenantContext
 @EnableCassandra
-@EnableMariaDB
+@EnablePostgreSQL
 @EnableCommandProcessing
 @EnableAnubis
 @EnableServiceException
