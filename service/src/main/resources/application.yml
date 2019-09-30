@@ -35,7 +35,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 server:
-  port: 8081
+  port: 2030
   contextPath: /cheques/v1
 
 cassandra:
