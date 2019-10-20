@@ -1,4 +1,4 @@
-# Apache Fineract CN Cheques Management [![Build Status](https://api.travis-ci.com/apache/fineract-cn-cheques.svg?branch=develop)](https://travis-ci.com/apache/fineract-cn-cheques) [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/apache/fineract-cn-cheques)](https://hub.docker.com/r/apache/fineract-cn-cheques/builds)
+# Apache Fineract CN Cheques Management [![Build Status](https://api.travis-ci.com/apache/fineract-cn-cheques.svg?branch=0.1.x)](https://travis-ci.com/apache/fineract-cn-cheques) [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/apache/fineract-cn-cheques)](https://hub.docker.com/r/apache/fineract-cn-cheques/builds)
 
 This project provides services to issue, validate cheques and execute transactions on them.
 [Read more](https://cwiki.apache.org/confluence/display/FINERACT/Fineract+CN+Project+Structure#FineractCNProjectStructure-cheques).
