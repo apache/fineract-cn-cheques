@@ -239,7 +239,7 @@ public class TestCheques extends AbstractChequeTest {
           .when(this.accountingServiceSpy).accountExists(randomCheque.getMicr().getAccountNumber());
 
       Mockito.doAnswer(invocation -> {
-        final JournalEntry journalEntry = invocation.getArgumentAt(0, JournalEntry.class);
+        final JournalEntry journalEntry = invocation.getArgument(0);
         final BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(journalEntry, "journalEntry");
         this.validator.validate(journalEntry, bindingResult);
         if (bindingResult.getErrorCount() != 0) {
