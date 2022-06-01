@@ -48,6 +48,8 @@ dependencies {
     compile(
             [group: 'org.apache.fineract.cn.cheques', name: 'api', version: project.version],
             [group: 'org.apache.fineract.cn.cheques', name: 'service', version: project.version],
+            [group: 'org.springframework', name: 'spring-jms'],
+            [group: 'org.springframework', name: 'spring-messaging'],
             [group: 'org.apache.fineract.cn.anubis', name: 'test', version: versions.frameworkanubis],
             [group: 'org.apache.fineract.cn', name: 'api', version: versions.frameworkapi],
             [group: 'org.apache.fineract.cn', name: 'test', version: versions.frameworktest],

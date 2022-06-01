@@ -16,22 +16,22 @@
  */
 
 group 'org.apache.fineract.cn.cheques'
-version 'spring_boot_2-SNAPSHOT'
+version '0.1.0-BUILD-SNAPSHOT'
 
 ext.versions = [
-        frameworkapi        : 'spring_boot_2-SNAPSHOT',
-        frameworklang       : 'spring_boot_2-SNAPSHOT',
-        frameworkasync      : 'spring_boot_2-SNAPSHOT',
-        frameworkcassandra  : 'spring_boot_2-SNAPSHOT',
-        frameworkpostgresql : 'spring_boot_2-SNAPSHOT',
-        frameworkcommand    : 'spring_boot_2-SNAPSHOT',
-        frameworktest       : 'spring_boot_2-SNAPSHOT',
-        frameworkanubis     : 'spring_boot_2-SNAPSHOT',
-        frameworkoffice     : 'spring_boot_2-SNAPSHOT',
-        frameworkaccounting : 'spring_boot_2-SNAPSHOT',
-        frameworkdeposit    : 'spring_boot_2-SNAPSHOT',
-        frameworkcustomer   : 'spring_boot_2-SNAPSHOT',
-        validator           : '6.1.4.Final'
+        frameworkapi        : '0.1.0-BUILD-SNAPSHOT',
+        frameworklang       : '0.1.0-BUILD-SNAPSHOT',
+        frameworkasync      : '0.1.0-BUILD-SNAPSHOT',
+        frameworkcassandra  : '0.1.0-BUILD-SNAPSHOT',
+        frameworkpostgresql : '0.1.0-BUILD-SNAPSHOT',
+        frameworkcommand    : '0.1.0-BUILD-SNAPSHOT',
+        frameworktest       : '0.1.0-BUILD-SNAPSHOT',
+        frameworkanubis     : '0.1.0-BUILD-SNAPSHOT',
+        frameworkoffice     : '0.1.0-BUILD-SNAPSHOT',
+        frameworkaccounting : '0.1.0-BUILD-SNAPSHOT',
+        frameworkdeposit    : '0.1.0-BUILD-SNAPSHOT',
+        frameworkcustomer   : '0.1.0-BUILD-SNAPSHOT',
+        validator           : '5.3.0.Final'
 ]
 
 tasks.withType(JavaCompile) {

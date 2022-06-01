@@ -32,7 +32,6 @@ import org.apache.fineract.cn.office.api.v1.client.OrganizationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,7 +43,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SuppressWarnings("WeakerAccess")
 @Configuration
 @EnableAutoConfiguration
-@EnableDiscoveryClient
 @EnableAsync
 @EnableTenantContext
 @EnableCassandra
@@ -62,9 +60,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 )
 @ComponentScan({
     "org.apache.fineract.cn.cheque.service.rest",
-    "org.apache.fineract.cn.cheque.service.internal.service",
-    "org.apache.fineract.cn.cheque.service.internal.repository",
-    "org.apache.fineract.cn.cheque.service.internal.command.handler"
+    "org.apache.fineract.cn.cheque.service.internal",
 })
 @EnableJpaRepositories({
     "org.apache.fineract.cn.cheque.service.internal.repository"

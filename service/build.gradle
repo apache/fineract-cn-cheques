@@ -21,6 +21,7 @@ buildscript {
     }
     repositories {
         jcenter()
+        mavenCentral()
     }
 }
 
@@ -45,7 +46,7 @@ bootJar {
 dependencies {
     compile(
             [group: 'org.springframework.cloud', name: 'spring-cloud-starter-config'],
-            [group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client'],
+            [group: 'org.springframework.boot', name: 'spring-boot-starter-web'],
             [group: 'org.springframework.boot', name: 'spring-boot-starter-jetty'],
             [group: 'org.apache.fineract.cn.cheques', name: 'api', version: project.version],
             [group: 'org.apache.fineract.cn.anubis', name: 'library', version: versions.frameworkanubis],

@@ -104,7 +104,6 @@ public abstract class AbstractChequeTest extends SuiteTestEnvironment {
   @Configuration
   @EnableEventRecording
   @EnableFeignClients(basePackages = {"org.apache.fineract.cn.cheque.api.v1"})
-  @RibbonClient(name = APP_NAME)
   @Import({ChequeConfiguration.class})
   @ComponentScan("org.apache.fineract.cn.cheque.listener")
   public static class TestConfiguration {
