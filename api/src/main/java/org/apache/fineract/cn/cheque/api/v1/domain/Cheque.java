@@ -17,10 +17,8 @@
  * under the License.
  */
 package org.apache.fineract.cn.cheque.api.v1.domain;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 public class Cheque {
 

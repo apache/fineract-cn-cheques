@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @SuppressWarnings("unused")
-@FeignClient(value = "cheques-v1", path = "/cheques/v1", configuration = CustomFeignClientsConfiguration.class)
+@FeignClient(value = "${kubernetes.cheque.service.name}", path = "/cheques/v1", url = "http://${kubernetes.cheque.service.name}:${kubernetes.cheque.server.port}", configuration = CustomFeignClientsConfiguration.class)
 public interface ChequeManager {
 
   @RequestMapping(

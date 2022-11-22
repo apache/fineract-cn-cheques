@@ -37,6 +37,7 @@ dependencies {
             [group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign'],
             [group: 'org.apache.fineract.cn', name: 'api', version: versions.frameworkapi],
             [group: 'org.hibernate', name: 'hibernate-validator', version: versions.validator],
+            [group: 'org.apache.fineract.cn', name: 'lang', version: versions.frameworklang],
             [group: 'org.hibernate', name: 'hibernate-validator-annotation-processor', version: versions.validator]
     )
 
